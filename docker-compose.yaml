@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  test-api:
+    build:
+      context: .
+    ports:
+      - "3001:3000"
+
+    environment:
+      - LOG_FILE_PATH=/app/logs/test-api.log
+      
+    volumes:
+      - .:/app
+      - ../logs:/app/logs
+      #- /app/node_modules
+
+    command: npm run start:prod
+
+    networks:
+      - infra_observability 
+
+networks:
+  infra_observability:
+    external: true
