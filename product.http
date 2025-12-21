@@ -1,7 +1,13 @@
 
-GET http://localhost:3000
+GET http://localhost:3001
 Content-Type: application/json
 
+
+###
+### Health Check
+###
+GET http://localhost:3001/health
+Content-Type: application/json
 
 ###
 ### Error Simulation Examples
