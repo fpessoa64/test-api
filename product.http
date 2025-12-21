@@ -1,0 +1,75 @@
+
+GET http://localhost:3000
+Content-Type: application/json
+
+
+###
+### Error Simulation Examples
+###
+
+###
+### Simulate database error on GET all products
+GET http://localhost:3001/api/products?simulateError=db_error
+Content-Type: application/json
+
+###
+### Simulate validation error on GET all products
+GET http://localhost:3001/api/products?simulateError=validation_error
+Content-Type: application/json
+
+###
+### Simulate overload error on GET all products
+GET http://localhost:3001/api/products?simulateError=overload_error
+Content-Type: application/json
+
+###
+### Simulate database error on GET product by ID
+GET http://localhost:3001/api/products/1?simulateError=db_error
+Content-Type: application/json
+
+###
+### Simulate validation error on CREATE product
+POST http://localhost:3001/api/products?simulateError=validation_error
+Content-Type: application/json
+
+{
+  "name": "Test Product",
+  "description": "This will fail with validation error",
+  "price": 100
+}
+
+###
+### Simulate overload error on UPDATE product
+PATCH http://localhost:3001/api/products/1?simulateError=overload_error
+Content-Type: application/json
+
+{
+  "name": "Updated Product",
+  "price": 200
+}
+
+###
+### Simulate database error on DELETE product
+DELETE http://localhost:3001/api/products/1?simulateError=db_error
+Content-Type: application/json
+
+###
+### Test invalid error type (should return 400)
+GET http://localhost:3001/api/products?simulateError=invalid_error
+Content-Type: application/json
+
+###
+### Combine error simulation with pagination
+GET http://localhost:3001/api/products?page=1&pageSize=5&simulateError=overload_error
+Content-Type: application/json
+
+
+###
+POST http://localhost:3001/api/products?simulateError=overload_error
+Content-Type: application/json
+
+{
+  "name": "Product to overload",
+  "description": "This will simulate overload error",
+  "price": 150
+}
