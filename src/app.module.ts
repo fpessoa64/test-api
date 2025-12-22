@@ -3,7 +3,7 @@ import { LoggerModule } from 'nestjs-pino';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
-import { HealthModule } from './health/health.module';
+import { HealthzModule } from './healthz/healthz.module';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as pino from 'pino';
@@ -28,7 +28,7 @@ const logFilePath = process.env.LOG_FILE_PATH || path.resolve(process.cwd(), '..
       },
     }),
     ProductsModule,
-    HealthModule,
+    HealthzModule,
   ],
   controllers: [AppController],
   providers: [AppService],

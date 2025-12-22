@@ -6,7 +6,7 @@ Content-Type: application/json
 ###
 ### Health Check
 ###
-GET http://localhost:3001/health
+GET http://localhost:3001/healthz
 Content-Type: application/json
 
 ###

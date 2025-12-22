@@ -1,13 +1,12 @@
 import { Controller, Get, HttpException, HttpStatus, Logger } from '@nestjs/common';
 
-@Controller('/health')
-export class HealthController {
-  private readonly logger = new Logger(HealthController.name);
+@Controller('/healthz')
+export class HealthzController {
+  private readonly logger = new Logger(HealthzController.name);
 
   @Get()
   check() {
     const seconds = new Date().getSeconds();
-    
     if (seconds > 30) {
       this.logger.error(`Health check failed. Seconds: ${seconds}`);
       throw new HttpException(
